@@ -1,39 +1,58 @@
-@JenkinTest
-Feature: Retail Page Login Testing 
+@assignment
+Feature: Retail Website Features 
+
+#Every feature file starts with Feature: <Name of feature file>
+#Every Scenario starts with Scenario: <Name of Test case we want to automate>
+#Gherkin keywords are Given When Then
+#Given is precondition
+#When is an Action taken
+#Then is an expected result (usually we write validation)
+#And is repeating an action or can be used following Given keyword as well
+#But is used for negative scenarios verification
 
 Background: 
-
 	Given User is on Retail website 
-	And User click  on MyAccount 
-	When  User click on Login 
-	And User enter username 'deebahossain@gmail.com' and password 'love' 
-	And User click on Login button 
-	Then User should be logged in to MyAccount dashboard
-	
+@Test 
+Scenario: Search functionality Test case 
 
-Scenario: Register as an Affiliate userwith Cheque Payment Method 
-	When User click on‘Register for an Affiliate Account’link 
-	And User fill affiliate form with below information 
-		|company|website|taxID|Cheque Payee Name|
-		|Landover|www.Landover.com|121014|David Dawson|
-	And User check on About us check box 
-	And User click on Continue button affiliate
-	Then User should see a success messages
- 
-
-Scenario: Edit your affiliate information from Cheque payment method to Bank Transfer 
-	When User click on‘Edit your affiliate informationlink 
-	And user click on Bank Transfer radio button 
-	And User fill Bank information with below information 
-		|bankName|abaNumber|swiftCode|accountName|accountNumber|
-		|Bank of America|100200|225588|Suhrab|112233665544|
-	And User click on Continue AffiliateButton 
-	Then User should see a success message 
+	When User search for 'iphone' 
+	And User click on search button 
+	Then User should see Iphone image 
 	
-Scenario: Edit your account Information 
-	When User click on‘Edit your account information’ link 
-	And User modify below information 
-		|firstname|lastName|email|telephone|
-		|Suhrab|Khiabani|falconeagle@tek-school.com|301-401-7895|
-	And User click on continue button 
-	Then User should seea message ‘Success: Your account has been successfully updated.’  
+	# In scenario Outline we can run same scenario with multiple set of data 
+	# we will use examples keyword to pass different data
+	# Every Scenario outline follows with Examples keyword
+	# Under examples keyword we placed data inside the pipes | and we can separate
+	# columns with pipes
+	# in this examples each row represent one time of execution
+	
+@TestSmokee 
+Scenario Outline: Test Search Funtionality with multiple set of Data 
+
+
+	When User search for '<itemName>' 
+	And User click on search button 
+	
+	Examples: 
+		|itemName|
+		|iphone|
+		|mac book|
+		|Canon|
+@RegisterTest		
+Scenario: Register and Account test case 
+			When User click  on MyAccount 
+			And User click on Register option 
+			And User fill the Registration form with Below information 
+				|firstName|lastName|email|telephone|password|confirmPassword|subscribe|
+				|Polina|Zohal|PolinaZohal@gmail.com|45414578920|testt|testt|no|
+			And user acceptthe privacy and policy 
+			And User click on Continue button 
+			Then User should be registered in Retail Website
+			
+			
+			
+			
+			
+			
+			
+	

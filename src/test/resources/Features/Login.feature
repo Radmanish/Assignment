@@ -1,4 +1,4 @@
-@JenkinTest
+@assignment
 Feature: Login to Retail Website
  
 # Testing to push unchanged to GitHub
@@ -15,7 +15,7 @@ Background:
 Scenario: Login to MyAccount 
 
 	When  User click on Login 
-	And User enter username 'falconeagle@tek-school.com' and password 'good' 
+	And User enter username 'DeebaNazir@gmail.com' and password '1234' 
 	And User click on Login button 
 	Then User should be logged in to MyAccount dashboard 
 	
